@@ -11,6 +11,6 @@ import proyecto.estacion.meteorologica.model.DataInfoEntity;
 @Repository
 public interface IDataRepository extends JpaRepository<DataInfoEntity, Integer>  {
 
-	@Query(value = "SELECT * FROM ESTA_METEO_DATA t WHERE t.chip_Id = ?1", nativeQuery = true)
+	@Query(value = "SELECT * FROM ESTA_METEO_DATA t WHERE t.chip_Id = ?", nativeQuery = true)
     List<DataInfoEntity> findByChipId(String chipId);
 }
