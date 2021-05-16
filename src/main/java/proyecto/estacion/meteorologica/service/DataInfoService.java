@@ -17,7 +17,7 @@ import proyecto.estacion.meteorologica.repository.IDataRepository;
 public class DataInfoService implements IDataInfoService{
      
     @Autowired
-    IDataRepository repository;
+    private IDataRepository repository;
      
     public List<ChipDataBean> getInfoByChip(String chipId)
     {
@@ -46,12 +46,13 @@ public class DataInfoService implements IDataInfoService{
     {
     	
     	DataInfoEntity newEntity = new DataInfoEntity();
+    	newEntity.setId(null);
     	newEntity.setChipId(infoData.getChipId());
 		newEntity.setHumedad(infoData.getHumedad());
         newEntity.setTemperatura(infoData.getTemperatura());
         newEntity.setHic(infoData.getHic());
         newEntity.setFechaGrabado(new Date());
-        newEntity = repository.saveAndFlush(newEntity);
+        newEntity = repository.save(newEntity);
          
         return infoData;   
  }

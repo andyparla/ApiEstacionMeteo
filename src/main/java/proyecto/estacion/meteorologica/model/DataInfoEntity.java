@@ -15,13 +15,13 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "ESTA_METEO_DATA")
+@Table(name = "ESTA_METEO_DATA" )
 public class DataInfoEntity {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy= GenerationType.IDENTITY , generator="course")
 	@Column(name = "ID")
-	private Integer id;
+	private Long id;
 
     @Column(name = "CHIP_ID")
 	private String chipId;
@@ -36,6 +36,6 @@ public class DataInfoEntity {
 	private String hic;
 	
 	@Column(name = "FEC_GRABADO")
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaGrabado;
 }
