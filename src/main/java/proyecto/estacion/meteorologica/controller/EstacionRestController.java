@@ -3,6 +3,7 @@ package proyecto.estacion.meteorologica.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +25,7 @@ public class EstacionRestController {
 	IDataInfoService dataService;
 	
 	@ApiOperation(value = "Obtiene la información almacenada por chip", 
-			response = ChipDataBean.class, tags = "DataInfo")
+			response = ChipDataBean.class, tags = "DataInfo", httpMethod = "GET")
     @ApiResponses(value = { 
             @ApiResponse(code = 200, message = "OK"),
             @ApiResponse(code = 401, message = "No autorizado"), 
@@ -34,7 +35,7 @@ public class EstacionRestController {
 		return dataService.getInfoByChip(chipId);
 	 }
 	
-	@ApiOperation(value = "Almacena la información obtenida por chip", tags = "DataInfo")
+	@ApiOperation(value = "Almacena la información obtenida por chip", tags = "DataInfo", httpMethod = "POST")
     @ApiResponses(value = { 
             @ApiResponse(code = 201, message = "Creado"),
             @ApiResponse(code = 401, message = "No autorizado"), 
@@ -42,5 +43,15 @@ public class EstacionRestController {
     @PostMapping(value = "/data", consumes = "application/json", produces = "application/json")
 	 public void postDataInfo(@RequestBody ChipDataBean chipData) {
 		dataService.crearActualizarData(chipData);
+	}
+	
+	@ApiOperation(value = "Elimina la información por ID", tags = "DataInfo", httpMethod = "DELETE")
+    @ApiResponses(value = { 
+            @ApiResponse(code = 201, message = "Borrado"),
+            @ApiResponse(code = 401, message = "No autorizado"), 
+            @ApiResponse(code = 404, message = "página no encontrada") })
+    @DeleteMapping(value = "/data/{chipId}")
+	 public void deleteDataInfo(@PathVariable(value = "chipId") String chipId) {
+		dataService.borrarData(chipId);
 	}
 } 

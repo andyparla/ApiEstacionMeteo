@@ -56,17 +56,17 @@ public class DataInfoService implements IDataInfoService{
         newEntity = repository.save(newEntity);
          
         return infoData;   
- }
+    }
      
     public void borrarData(String chipId) throws InformacionNoEncontradaException
     {
-//        Optional<DataInfoEntity> data = repository.findById(chipId);
-//         
-//        if(data.isPresent())
-//        {
-//            repository.deleteById(chipId);
-//        } else {
-//            throw new InformacionNoEncontradaException("No student record exist for given id", chipId);
-//        }
+    	List<DataInfoEntity>  data = repository.findByChipId(chipId);
+         
+        if(!CollectionUtils.isEmpty(data))
+        {
+            repository.deleteByChipId(chipId);
+        } else {
+            throw new InformacionNoEncontradaException("No student record exist for given id", chipId);
+        }
     }
 }
