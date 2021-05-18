@@ -1,4 +1,4 @@
-package proyecto.estacion.meteorologica.model;
+package proyecto.estacion.meteorologica.entity;
 
 import java.util.Date;
 

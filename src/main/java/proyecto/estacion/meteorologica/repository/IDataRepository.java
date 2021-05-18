@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import proyecto.estacion.meteorologica.model.DataInfoEntity;
+import proyecto.estacion.meteorologica.entity.DataInfoEntity;
 
 @Repository
 public interface IDataRepository extends JpaRepository<DataInfoEntity, Integer>  {

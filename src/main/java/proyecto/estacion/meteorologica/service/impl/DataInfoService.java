@@ -1,4 +1,4 @@
-package proyecto.estacion.meteorologica.service;
+package proyecto.estacion.meteorologica.service.impl;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -8,10 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import proyecto.estacion.meteorologica.entity.DataInfoEntity;
 import proyecto.estacion.meteorologica.exception.InformacionNoEncontradaException;
 import proyecto.estacion.meteorologica.model.ChipDataBean;
-import proyecto.estacion.meteorologica.model.DataInfoEntity;
 import proyecto.estacion.meteorologica.repository.IDataRepository;
+import proyecto.estacion.meteorologica.service.IDataInfoService;
 
 @Service
 public class DataInfoService implements IDataInfoService{
