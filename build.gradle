@@ -1,0 +1,44 @@
+apply plugin: 'java'
+//apply plugin: 'maven'
+
+group = 'proyecto.estacion.meteorologica'
+version = '0.0.1-SNAPSHOT'
+
+description = """api"""
+
+sourceCompatibility = 11
+targetCompatibility = 11
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+repositories {        
+     mavenCentral()
+}
+
+dependencies {
+    //implementation 'org.springframework.boot:spring-boot-starter'
+	//testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	//compileOnly 'org.projectlombok:lombok:1.18.12'
+    //implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.6.1'
+    //implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.6.1'
+    //implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.3.3.RELEASE'
+   // implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.21'
+    //implementation group: 'org.springframework.boot', name: 'spring-boot-devtools', version:'2.3.3.RELEASE'
+    
+    compileOnly group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version:'2.3.3.RELEASE'
+    compileOnly group: 'org.springframework.boot', name: 'spring-boot-starter-web', version:'2.3.3.RELEASE'
+    compileOnly group: 'org.projectlombok', name: 'lombok', version:'1.18.12'
+    compileOnly group: 'io.springfox', name: 'springfox-swagger2', version:'2.6.1'
+    compileOnly group: 'io.springfox', name: 'springfox-swagger-ui', version:'2.6.1'
+    compileOnly group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version:'2.3.3.RELEASE'
+    compileOnly(group: 'mysql', name: 'mysql-connector-java', version:'8.0.21') 
+    {
+       exclude(module: 'protobuf-java')
+    }
+    compileOnly group: 'org.springframework.boot', name: 'spring-boot-devtools', version:'2.3.3.RELEASE'
+    testImplementation(group: 'org.springframework.boot', name: 'spring-boot-starter-test', version:'2.3.3.RELEASE') 
+    {
+       exclude(module: 'junit-vintage-engine')
+    }
+}
