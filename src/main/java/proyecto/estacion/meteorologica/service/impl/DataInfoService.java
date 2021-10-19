@@ -45,24 +45,6 @@ public class DataInfoService implements IDataInfoService{
     		data.setFechaGrabado(dataInfoEntity.getFechaGrabado());
         	return data;
         }).collect(Collectors.toList());
-        
-//        if(!CollectionUtils.isEmpty(infoList)) 
-//        {
-//        	List<ChipDataBean> lstInfoData = new ArrayList<ChipDataBean>();
-//        	for(DataInfoEntity entity : infoList) 
-//        	{
-//        		ChipDataBean data = new ChipDataBean();
-//        		data.setChipId(entity.getChipId());
-//        		data.setHumedad(entity.getHumedad());
-//        		data.setHic(entity.getHic());
-//        		data.setTemperatura(entity.getTemperatura());
-//        		data.setFechaGrabado(entity.getFechaGrabado());
-//        		lstInfoData.add(data);
-//        	}
-//        	return lstInfoData;
-//        } else {
-//            return new ArrayList<ChipDataBean>();
-//        }
     }
      
     /**
