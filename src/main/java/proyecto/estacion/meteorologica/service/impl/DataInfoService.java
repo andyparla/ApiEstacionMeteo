@@ -1,8 +1,9 @@
 package proyecto.estacion.meteorologica.service.impl;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,24 +35,34 @@ public class DataInfoService implements IDataInfoService{
     public List<ChipDataBean> getInfoByChip(String chipId)
     {
     	List<DataInfoEntity> infoList = repository.findByChipId(chipId);
-         
-        if(!CollectionUtils.isEmpty(infoList)) 
-        {
-        	List<ChipDataBean> lstInfoData = new ArrayList<ChipDataBean>();
-        	for(DataInfoEntity entity : infoList) 
-        	{
-        		ChipDataBean data = new ChipDataBean();
-        		data.setChipId(entity.getChipId());
-        		data.setHumedad(entity.getHumedad());
-        		data.setHic(entity.getHic());
-        		data.setTemperatura(entity.getTemperatura());
-        		data.setFechaGrabado(entity.getFechaGrabado());
-        		lstInfoData.add(data);
-        	}
-        	return lstInfoData;
-        } else {
-            return new ArrayList<ChipDataBean>();
-        }
+    	
+    	return infoList.stream().map(dataInfoEntity -> {
+        	ChipDataBean data = new ChipDataBean();
+    		data.setChipId(dataInfoEntity.getChipId());
+    		data.setHumedad(dataInfoEntity.getHumedad());
+    		data.setHic(dataInfoEntity.getHic());
+    		data.setTemperatura(dataInfoEntity.getTemperatura());
+    		data.setFechaGrabado(dataInfoEntity.getFechaGrabado());
+        	return data;
+        }).collect(Collectors.toList());
+        
+//        if(!CollectionUtils.isEmpty(infoList)) 
+//        {
+//        	List<ChipDataBean> lstInfoData = new ArrayList<ChipDataBean>();
+//        	for(DataInfoEntity entity : infoList) 
+//        	{
+//        		ChipDataBean data = new ChipDataBean();
+//        		data.setChipId(entity.getChipId());
+//        		data.setHumedad(entity.getHumedad());
+//        		data.setHic(entity.getHic());
+//        		data.setTemperatura(entity.getTemperatura());
+//        		data.setFechaGrabado(entity.getFechaGrabado());
+//        		lstInfoData.add(data);
+//        	}
+//        	return lstInfoData;
+//        } else {
+//            return new ArrayList<ChipDataBean>();
+//        }
     }
      
     /**
