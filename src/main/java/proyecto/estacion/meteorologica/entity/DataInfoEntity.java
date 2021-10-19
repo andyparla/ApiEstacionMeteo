@@ -13,10 +13,6 @@ import javax.persistence.TemporalType;
 
 import lombok.Data;
 
-// TODO: Auto-generated Javadoc
-/**
- * The Class DataInfoEntity.
- */
 
 /**
  * Instantiates a new data info entity.
