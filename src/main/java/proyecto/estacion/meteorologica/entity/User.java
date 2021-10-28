@@ -28,6 +28,7 @@ public class User implements Serializable{
     
     @Column(name = "password")
     private String password;
+    
     public long getId(){
         return id;
     }
